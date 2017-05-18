@@ -25,12 +25,19 @@ let encodeBase64 = (a) => {
     return b.toString('base64');
 }
 
-let testString = '49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d';
-let bytes = decodeHex(testString);
-let encoded = encodeBase64(bytes);
-let bytes2 = decodeBase64(encoded);
+let fixedLengthXor = (a1, a2) => {
+    if(a1.length !== a2.length) throw 'Arrays not equal size';
+    let a3 = [];
+    for(let i = 0; i < a1.length; ++i) {
+        a3[i] = a1[i] ^ a2[i];
+    }
+    return a3;
+}
 
-console.log(testString);
-console.log(encoded);
+let s1 = '1c0111001f010100061a024b53535009181c';
+let s2 = '686974207468652062756c6c277320657965';
 
-console.log(bytes2);
+let a1 = decodeHex(s1);
+let a2 = decodeHex(s2);
+let a3 = fixedLengthXor(a1, a2);
+console.log(encodeHex(a3));
