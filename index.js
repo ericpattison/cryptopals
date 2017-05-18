@@ -78,19 +78,40 @@ let score = (s) => {
     return count(top6, top6expected) + count(bottom6, bottom6expected);
 }
 
-let s = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736';
-let a = decodeHex(s);
+const filename = '4.txt';
+var lineReader = require('readline').createInterface({
+    input: require('fs').createReadStream(filename)
+});
 
-let scored = [];
-for(let i = 0x0; i <= 0xFF; ++i) {
-    let b = new Buffer(xor(i, a));
-    let r = b.toString();
+let lineIndex = 0;
+let data = [];
 
-    let sc = score(r);
-    scored.push({score: sc, value: r});
-}
+lineReader.on('line', (line) => {
+    lineIndex++;
+    for(let i = 0; i < 256; ++i) {
+        let decoded = decodeHex(line);
+        let xord = xor(i, decoded);
+        let message = new Buffer(xord).toString();
+        let sc = score(message);
 
-scored.sort((a,b) => { return b.score - a.score });
-for(let i = 0; i < 10; ++i) {
-    console.log(scored[i].score + ' => ' + scored[i].value);
-}
+        data.push({
+            line: lineIndex,
+            key: i,
+            message: message,
+            score: sc
+        });
+    }
+    //console.log(line);
+}).on('close', () => {
+    /*for(let i = 0; i < 10; ++i) {
+        console.log(data[i]);
+    }*/
+
+    data.sort((a,b) => {
+        return b.score - a.score;
+    });
+
+    for(let i = 0; i < 10; ++i) {
+        console.log(data[i]);
+    }
+});
