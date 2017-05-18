@@ -88,8 +88,8 @@ let data = [];
 
 lineReader.on('line', (line) => {
     lineIndex++;
+    let decoded = decodeHex(line);
     for(let i = 0; i < 256; ++i) {
-        let decoded = decodeHex(line);
         let xord = xor(i, decoded);
         let message = new Buffer(xord).toString();
         let sc = score(message);
@@ -111,7 +111,9 @@ lineReader.on('line', (line) => {
         return b.score - a.score;
     });
 
-    for(let i = 0; i < 10; ++i) {
+    data.forEach((i) => { console.log(i.score + ', ' + i.line + ', ' + i.key + ' => ' + i.message)});
+
+    /*for(let i = 0; i < 10; ++i) {
         console.log(data[i]);
-    }
+    }*/
 });
