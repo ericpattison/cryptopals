@@ -1,0 +1,40 @@
+{ line: 171,
+  key: 53,
+  message: 'Now that the party is jumping\n',
+  score: 2.0881317999999998 }
+{ line: 103,
+  key: 125,
+  message: 'VD p | <N \\Xp�C@?hPB(\u0000c9��_X P',
+  score: 1.2217938999999998 }
+{ line: 201,
+  key: 122,
+  message: ')r AN� f�T\'ye\\e%~9*KUM?\'3EieM<',
+  score: 1.2027172999999998 }
+{ line: 170,
+  key: 103,
+  message: '2|�oLr\u0004��E scgu*,\u0002oc|= E1n]� ',
+  score: 1.1757782 }
+{ line: 233,
+  key: 126,
+  message: ' )�OMBCr9t9+iM/nOHTE�qM4AOHn<N',
+  score: 1.1550519 }
+{ line: 284,
+  key: 100,
+  message: '6 tJxYT 4�e\u0012}@�K�sWa�<mtOEAL)�',
+  score: 1.1446981 }
+{ line: 321,
+  key: 116,
+  message: 'kYK(ExE vTtd�5A-PA�o24 ~pdf�oK',
+  score: 1.1441048999999996 }
+{ line: 220,
+  key: 122,
+  message: 'mVVo @HZs*&Slؾ�: dpdOA\u0014` 4Us',
+  score: 1.1408761 }
+{ line: 171,
+  key: 97,
+  message: '\u001a;#t <5 t <1t$5& -t=\'t>!9$=:3^',
+  score: 1.1319512999999999 }
+{ line: 244,
+  key: 113,
+  message: ' QNop�\'I Y1b ;\'/"c#Rt^6a!`asp',
+  score: 1.1291078 }

@@ -44,38 +44,15 @@ let xor = (k, a) => {
 }
 
 let score = (s) => {
-    let top6expected = ' ETAOI', bottom6expected = 'VKJXQZ';
-    let charMap = {' ':0, 'A':0,'B':0, 'C':0, 'D':0, 'E':0, 'F':0, 'G':0, 'H':0, 'I':0, 'J':0, 'K':0, 'L':0, 'M':0, 'N':0, 'O':0, 'P':0, 'Q':0, 'S':0, 'T':0, 'U':0, 'V':0, 'W':0, 'X':0, 'Y':0, 'Z':0};
+    const frequencies={'A':0.0651738,'B':0.0124248,'C':0.0217339,'D':0.0349835,'E':0.1041442,'F':0.0197881,'G':0.0158610,'H':0.0492888,'I':0.0558094,'J':0.0009033,'K':0.0050529,'L':0.0331490,'M':0.0202124,'N':0.0564513,'O':0.0596302,'P':0.0137645,'Q':0.0008606,'R':0.0497563,'S':0.0515760,'T':0.0729357,'U':0.0225134,'V':0.0082903,'W':0.0171272,'X':0.0013692,'Y':0.0145984,'Z':0.0007836,' ':0.1918182}
     s = s.toUpperCase();
-
+    let score = 0;
     for(let i = 0; i < s.length; ++i) {
-        if(charMap[s[i]] >= 0) {
-            charMap[s[i]] ++;
+        if(s[i] in frequencies) {
+            score += frequencies[s[i]];
         }
     }
-
-    let list = [];
-    for(var k in charMap) { list.push([k, charMap[k]]); }
-    
-    let sorted = list.sort((a,b) => { return b[1] - a[1]; });
-
-    let str = '';
-    sorted.forEach( (i) => { str += i[0]} );
-
-    let top6 = str.substr(0, 6);
-    let bottom6 = str.substr(str.length-7, 6);
-
-    let count = (s1, s2) => {
-        let c = 0;
-        for(let i = 0; i < s1.length; ++i) {
-            for(let j = i; j < s2.length; ++j) {
-                if(s1[i] == s2[j]) c++;
-            }
-        }
-        return c;
-    }
-    
-    return count(top6, top6expected) + count(bottom6, bottom6expected);
+    return score;
 }
 
 const filename = '4.txt';
@@ -101,17 +78,13 @@ lineReader.on('line', (line) => {
             score: sc
         });
     }
-    //console.log(line);
+    
 }).on('close', () => {
-    /*for(let i = 0; i < 10; ++i) {
-        console.log(data[i]);
-    }*/
-
     data.sort((a,b) => {
         return b.score - a.score;
     });
 
-    for(let i = 0; i < 10; ++i) {
+    for(let i = 0; i < 1; ++i) {
         console.log(data[i]);
     }
 });
